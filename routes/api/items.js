@@ -3,7 +3,7 @@ const router = express.Router();
 
 
 // Item Model
-// const Item = require('../../models/item');
+const Item = require('../../models/item');
 
 // @route  GET api/items
 // @desc   Get All Items
