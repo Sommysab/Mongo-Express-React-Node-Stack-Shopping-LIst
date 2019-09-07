@@ -22,6 +22,7 @@ mongoose.connect(db, { useNewUrlParser: true })
 app.use('/api/items', items); 
 
 if(process.env.NODE_ENV === 'production') {
+  
   // Set static folder
   app.use(express.static('client/build'));
   app.get('*', (req, res) => {
