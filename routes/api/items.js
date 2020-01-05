@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const auth = require('../../middleware/auth');
 
 // Item Model
 const Item = require('../../models/item');
@@ -16,8 +17,8 @@ router.get('/', (req, res) => {  // only slash since we are already directed her
 
 // @route  POST api/items
 // @desc   Creat ITEM
-// @access Public
-router.post('/', (req, res) => {  
+// @access Private
+router.post('/', auth, (req, res) => {  
     // Create new object // Item relative to Model name
     const newItem = new Item({  
         name: req.body.name // note: date added automatically with model
@@ -30,8 +31,8 @@ router.post('/', (req, res) => {
 
 // @route  DELETE api/items
 // @desc   DELETE ITEM
-// @access Public
-router.delete('/:id', (req, res) => {  
+// @access Private
+router.delete('/:id', auth, (req, res) => {  
     Item.findById(req.params.id)
       .then(item => item.remove().then(() => res.json({success: true})))
       .catch(err => res.status(404).json({success: false}));

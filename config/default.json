@@ -1,0 +1,4 @@
+{
+    "mongoURI": "uri/to/mongodb",
+    "jwtSecret": "secret"
+}
